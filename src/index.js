@@ -6,9 +6,10 @@ import { fetchCountries } from './fetchCountries';
 const DEBOUNCE_DELAY = 300;
 
 const form = {
-  inputEl: document.querySelector('#search-box'),
-  countriesList: document.querySelector('.country-list'),
-  countriesInfo: document.querySelector('.country-info'),
+    inputEl: document.querySelector('#search-box'),
+    countriesInfo: document.querySelector('.country-info'),
+    countriesList: document.querySelector('.country-list'),
+  
 };
 
 
@@ -30,13 +31,6 @@ function clearMarkup() {
   form.countriesInfo.innerHTML = '';
 }
 
-
-function showError() {
-  clearMarkup();
-  Notify.failure('Oops, there is no country with that name');
-}
-
-
 function renderCountries(countriesName) {
   clearMarkup();
 
@@ -50,7 +44,6 @@ function renderCountries(countriesName) {
   }
 }
 
-
 function renderCountryInfo(countriesName) {
   const markupCountry = countriesName
     .map(({ name, flags }) => {
@@ -62,7 +55,6 @@ function renderCountryInfo(countriesName) {
     .join('');
   form.countriesList.innerHTML = markupCountry;
 }
-
 
 function renderCountryData(countriesName) {
   clearMarkup();
@@ -82,4 +74,7 @@ function renderCountryData(countriesName) {
   form.countriesInfo.innerHTML = markupInfo;
 }
 
-
+function showError() {
+  clearMarkup();
+  Notify.failure('Oops, there is no country with that name');
+}
